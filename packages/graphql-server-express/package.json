@@ -1,6 +1,6 @@
 {
   "name": "graphql-server-express",
-  "version": "0.7.3-4",
+  "version": "0.7.3-5",
   "description": "Production-ready Node.js GraphQL server for Express and Connect",
   "main": "dist/index.js",
   "scripts": {
