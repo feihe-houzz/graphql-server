@@ -1,3 +1,4 @@
+const _ = require('lodash');
 import * as express from 'express';
 import * as url from 'url';
 import { GraphQLOptions, HttpQueryError, runHttpQuery } from 'graphql-server-core';
@@ -5,6 +6,32 @@ import * as GraphiQL from 'graphql-server-module-graphiql';
 
 export interface ExpressGraphQLOptionsFunction {
   (req?: express.Request, res?: express.Response): GraphQLOptions | Promise<GraphQLOptions>;
+}
+
+function upperFirst(key) {
+  console.log(key);
+  return key[0].toUpperCase() + key.substring(1);
+}
+
+function convertToPascalCase(a) {
+
+  var b = Array.isArray(a) ? [] : {};
+
+  _.each(a, function(val, key) {
+
+    if (typeof val === 'object') {
+      console.log('val:', val);
+      val = convertToPascal(val);
+    }
+
+    if (Array.isArray(a)) {
+      b.push(val);
+    } else {
+      b[upperFirst(key)] = val;
+    }
+  });
+
+  return b;
 }
 
 // Design principles:
@@ -33,7 +60,9 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
       query: req.method === 'POST' ? req.body : req.query,
     }).then((gqlResponse) => {
       res.setHeader('Content-Type', 'application/json');
-      res.write(gqlResponse);
+      var gql = JSON.parse(gqlResponse);
+      gql = convertToPascalCase(gql);
+      res.write(JSON.stringify(gql));
       res.end();
     }, (error: HttpQueryError) => {
       if ( 'HttpQueryError' !== error.name ) {
