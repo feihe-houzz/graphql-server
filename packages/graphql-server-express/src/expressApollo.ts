@@ -15,7 +15,7 @@ function upperFirst(key) {
 
 function convertToPascalCase(a) {
 
-  var b = Array.isArray(a) ? [] : {};
+  let b: any = Array.isArray(a) ? [] : {};
 
   _.each(a, function(val, key) {
 
