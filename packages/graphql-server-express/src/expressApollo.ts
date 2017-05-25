@@ -21,7 +21,7 @@ function convertToPascalCase(a) {
 
     if (typeof val === 'object') {
       console.log('val:', val);
-      val = convertToPascal(val);
+      val = convertToPascalCase(val);
     }
 
     if (Array.isArray(a)) {
