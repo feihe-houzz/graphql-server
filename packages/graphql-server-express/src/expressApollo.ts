@@ -58,9 +58,11 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
       query: req.method === 'POST' ? req.body : req.query,
     }).then((gqlResponse) => {
       res.setHeader('Content-Type', 'application/json');
+      if (typeof options !== 'function' && options.pascalCase) {
         var gql = JSON.parse(gqlResponse);
         gql = convertToPascalCase(gql);
         gqlResponse = JSON.stringify(gql);
+      }
       res.write(gqlResponse);
       res.end();
     }, (error: HttpQueryError) => {
