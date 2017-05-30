@@ -69,6 +69,9 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <script src="//cdn.jsdelivr.net/react/15.3.1/react.min.js"></script>
   <script src="//cdn.jsdelivr.net/react/15.3.1/react-dom.min.js"></script>
   <script src="//npmcdn.com/react-copy-to-clipboard@5.0.0/build/react-copy-to-clipboard.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
   <script src="/j/graphiql?file=graphiql.min.js"></script>
   ${usingSubscriptions ?
     '<script src="//unpkg.com/subscriptions-transport-ws@0.5.4/browser/client.js"></script>' +
