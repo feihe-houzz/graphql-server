@@ -124,14 +124,20 @@ export function renderGraphiQL(data: GraphiQLData): string {
     var fetchURL = locationQuery(otherParams, '${endpointURL}');
 
     // Defines a GraphQL fetcher using the fetch API.
-    function graphQLFetcher(graphQLParams) {
-        return fetch(fetchURL, {
-          method: 'post',
-          headers: {
+    function graphQLFetcher(graphQLParams, extraHeaders) {
+        var headers = {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             ${passHeader}
-          },
+        };
+
+        console.log('extraHeaders: ', extraHeaders);
+
+        headers = _.extend(headers, extraHeaders);
+
+        return fetch(fetchURL, {
+          method: 'post',
+          headers: headers,
           body: JSON.stringify(graphQLParams),
           credentials: 'include',
         }).then(function (response) {
