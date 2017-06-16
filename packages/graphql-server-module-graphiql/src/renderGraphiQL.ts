@@ -71,6 +71,8 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <script src="//npmcdn.com/react-copy-to-clipboard@5.0.0/build/react-copy-to-clipboard.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
 
   <script src="/j/graphiql?file=graphiql.min.js"></script>
   ${usingSubscriptions ?
