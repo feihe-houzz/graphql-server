@@ -74,7 +74,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
 
-  <script src="/j/graphiql?file=graphiql.min.js"></script>
+  <script src="/j/graphiql?file=graphiql.js"></script>
   ${usingSubscriptions ?
     '<script src="//unpkg.com/subscriptions-transport-ws@0.5.4/browser/client.js"></script>' +
     '<script src="//unpkg.com/graphiql-subscriptions-fetcher@0.0.2/browser/client.js"></script>'
