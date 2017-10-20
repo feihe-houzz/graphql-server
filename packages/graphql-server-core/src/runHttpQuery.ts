@@ -139,7 +139,7 @@ export async function runHttpQuery(handlerArguments: Array<any>, request: HttpQu
   if (!isBatch) {
     const gqlResponse = responses[0];
     if (gqlResponse.errors && typeof gqlResponse.data === 'undefined') {
-      throw new HttpQueryError(400, JSON.stringify(gqlResponse), true, {
+      throw new HttpQueryError(200, JSON.stringify(gqlResponse), true, {
         'Content-Type': 'application/json',
       });
     }

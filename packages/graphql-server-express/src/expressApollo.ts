@@ -77,7 +77,17 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
       }
 
       res.statusCode = error.statusCode;
-      res.write(error.message);
+
+      var errorObj;
+      try {
+          var errorObj = JSON.parse(error.message);
+          errorObj.data = null;
+          res.write(JSON.stringify(errorObj));
+      } catch (e) {
+          // fallback
+          res.write(error.message);
+      }
+
       res.end();
     });
   };
