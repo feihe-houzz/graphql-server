@@ -8,30 +8,6 @@ export interface ExpressGraphQLOptionsFunction {
   (req?: express.Request, res?: express.Response): GraphQLOptions | Promise<GraphQLOptions>;
 }
 
-function upperFirst(key) {
-  return key[0].toUpperCase() + key.substring(1);
-}
-
-function convertToPascalCase(a) {
-
-  let b: any = Array.isArray(a) ? [] : {};
-
-  _.each(a, function(val, key) {
-
-    if (typeof val === 'object') {
-      val = convertToPascalCase(val);
-    }
-
-    if (Array.isArray(a)) {
-      b.push(val);
-    } else {
-      b[upperFirst(key)] = val;
-    }
-  });
-
-  return b;
-}
-
 // Design principles:
 // - there is just one way allowed: POST request with JSON body. Nothing else.
 // - simple, fast and secure
@@ -58,10 +34,8 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
       query: req.method === 'POST' ? req.body : req.query,
     }).then((gqlResponse) => {
       res.setHeader('Content-Type', 'application/json');
-      if (typeof options !== 'function' && options.pascalCase) {
-        var gql = JSON.parse(gqlResponse);
-        gql = convertToPascalCase(gql);
-        gqlResponse = JSON.stringify(gql);
+      if (typeof options !== 'function' && options.postProcessing) {
+          gqlResponse = options.postProcessing(gqlResponse);
       }
       res.write(gqlResponse);
       res.end();
