@@ -27,7 +27,7 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
     throw new Error(`Apollo Server expects exactly one argument, got ${arguments.length}`);
   }
 
-  return (req: express.Request, res: express.Response): void => {
+  return (req: express.Request, res: express.Response): void | Promise<any> => {
     var skipRes = res === null;
     return runHttpQuery([req, res], {
       method: req.method,
