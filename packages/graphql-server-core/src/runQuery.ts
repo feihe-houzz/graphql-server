@@ -135,6 +135,7 @@ function doRunQuery(options: QueryOptions): Promise<ExecutionResult> {
             logFunction({action: LogAction.request, step: LogStep.end});
             let response = {
                 data: gqlResponse.data,
+                documentAST: documentAST
             };
             if (gqlResponse.errors) {
                 response['errors'] = format(gqlResponse.errors);
