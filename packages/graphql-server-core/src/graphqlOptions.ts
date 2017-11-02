@@ -25,7 +25,7 @@ export interface GraphQLServerOptions {
   validationRules?: Array<(context: ValidationContext) => any>;
   formatResponse?: Function;
   debug?: boolean;
-  pascalCase?: boolean;
+  postProcessing?: Function;
 }
 
 export default GraphQLServerOptions;
