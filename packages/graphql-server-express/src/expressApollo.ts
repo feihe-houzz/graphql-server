@@ -28,20 +28,37 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
   }
 
   return (req: express.Request, res: express.Response): void => {
+    var skipRes = res === null;
     runHttpQuery([req, res], {
       method: req.method,
       options: options,
       query: req.method === 'POST' ? req.body : req.query,
     }).then((gqlResponse) => {
-      res.setHeader('Content-Type', 'application/json');
-      if (typeof options !== 'function' && options.postProcessing) {
-          gqlResponse = options.postProcessing(gqlResponse);
+      if (skipRes) {
+        return gqlResponse;
       }
+      res.setHeader('Content-Type', 'application/json');
       res.write(gqlResponse);
       res.end();
     }, (error: HttpQueryError) => {
       if ( 'HttpQueryError' !== error.name ) {
         throw error;
+      }
+
+      var errorObj;
+      try {
+          var errorObj = JSON.parse(error.message);
+          errorObj.data = null;
+          if (skipRes) {
+            return errorObj;
+          }
+          res.write(JSON.stringify(errorObj));
+      } catch (e) {
+          // fallback
+          if (skipRes) {
+            return error.message;
+          }
+          res.write(error.message);
       }
 
       if ( error.headers ) {
@@ -51,16 +68,6 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
       }
 
       res.statusCode = error.statusCode;
-
-      var errorObj;
-      try {
-          var errorObj = JSON.parse(error.message);
-          errorObj.data = null;
-          res.write(JSON.stringify(errorObj));
-      } catch (e) {
-          // fallback
-          res.write(error.message);
-      }
 
       res.end();
     });

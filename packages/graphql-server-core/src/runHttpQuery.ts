@@ -143,8 +143,14 @@ export async function runHttpQuery(handlerArguments: Array<any>, request: HttpQu
         'Content-Type': 'application/json',
       });
     }
+    if (!optionsObject.formatResponse(null, null, true)) {
+        return gqlResponse;
+    }
     return JSON.stringify(gqlResponse);
   }
 
+  if (!optionsObject.formatResponse(null, null, true)) {
+    return gqlResponse;
+  }
   return JSON.stringify(responses);
 }
