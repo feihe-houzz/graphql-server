@@ -45,6 +45,16 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
         throw error;
       }
 
+      if (!skipRes) {
+          if ( error.headers ) {
+            Object.keys(error.headers).forEach((header) => {
+              res.setHeader(header, error.headers[header]);
+            });
+          }
+
+          res.statusCode = error.statusCode;
+      }
+
       var errorObj;
       try {
           var errorObj = JSON.parse(error.message);
@@ -60,14 +70,6 @@ export function graphqlExpress(options: GraphQLOptions | ExpressGraphQLOptionsFu
           }
           res.write(error.message);
       }
-
-      if ( error.headers ) {
-        Object.keys(error.headers).forEach((header) => {
-          res.setHeader(header, error.headers[header]);
-        });
-      }
-
-      res.statusCode = error.statusCode;
 
       res.end();
     });
