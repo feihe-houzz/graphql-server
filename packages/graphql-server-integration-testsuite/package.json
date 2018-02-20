@@ -1,7 +1,7 @@
 {
   "name": "graphql-server-integration-testsuite",
   "private": true,
-  "version": "0.7.3-21",
+  "version": "0.7.3-24",
   "description": "Apollo Server Integrations testsuite",
   "main": "dist/index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/apollostack/graphql-server#readme",
   "dependencies": {
     "graphql-server-core": "^0.7.3-21",
-    "graphql-server-module-graphiql": "^0.7.3-13",
+    "graphql-server-module-graphiql": "^0.7.3-24",
     "graphql-server-module-operation-store": "^0.7.3-13",
     "supertest": "^3.0.0",
     "supertest-as-promised": "^4.0.0"
