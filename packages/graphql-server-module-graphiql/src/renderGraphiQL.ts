@@ -64,7 +64,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
       width: 100%;
     }
   </style>
-  <link href="/j/graphiql?file=graphiql.css" rel="stylesheet" />
+  <link href="/j/graphouzz?file=graphiql.css" rel="stylesheet" />
   <script src="//cdn.jsdelivr.net/fetch/0.9.0/fetch.min.js"></script>
   <script src="//cdn.jsdelivr.net/react/15.3.1/react.min.js"></script>
   <script src="//cdn.jsdelivr.net/react/15.3.1/react-dom.min.js"></script>
@@ -74,7 +74,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
 
-  <script src="/j/graphiql?file=graphiql.js"></script>
+  <script src="/j/graphouzz?file=graphiql.js"></script>
   ${usingSubscriptions ?
     '<script src="//unpkg.com/subscriptions-transport-ws@0.5.4/browser/client.js"></script>' +
     '<script src="//unpkg.com/graphiql-subscriptions-fetcher@0.0.2/browser/client.js"></script>'
