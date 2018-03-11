@@ -54,7 +54,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>GraphiQL</title>
+  <title>Graphouzz</title>
   <meta name="robots" content="noindex" />
   <style>
     html, body {
