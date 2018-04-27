@@ -26,6 +26,7 @@ export type GraphiQLData = {
   operationName?: string,
   result?: Object,
   passHeader?: string,
+  snapshot?: string,
 };
 
 // Current latest version of GraphiQL.
@@ -47,6 +48,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
   const resultString = null;
   const operationName = data.operationName;
   const passHeader = data.passHeader ? data.passHeader : '';
+  const snapshot = data.snapshot? data.snapshot : '';
 
   /* eslint-disable max-len */
   return `
@@ -73,6 +75,13 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 
   <script src="/j/graphouzz?file=graphiql.js"></script>
   ${usingSubscriptions ?
@@ -180,6 +189,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
         response: ${safeSerialize(resultString)},
         variables: ${safeSerialize(variablesString)},
         operationName: ${safeSerialize(operationName)},
+        snapshot: ${safeSerialize(snapshot)},
       }),
       document.body
     );

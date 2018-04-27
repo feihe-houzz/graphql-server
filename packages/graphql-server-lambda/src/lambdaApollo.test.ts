@@ -10,13 +10,13 @@ function createLambda(options: CreateAppOptions = {}) {
     callback,
     event,
     context;
-
+/*
   options.graphqlOptions = options.graphqlOptions || { schema: Schema };
   if (options.graphiqlOptions ) {
     handler = graphiqlLambda( options.graphiqlOptions );
   } else {
     handler = graphqlLambda( options.graphqlOptions );
-  }
+}*/
 
   return function(req, res) {
     let body = '';

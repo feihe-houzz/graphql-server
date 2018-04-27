@@ -7,7 +7,7 @@ import testSuite, { schema as Schema, CreateAppOptions } from 'graphql-server-in
 
 function createConnectApp(options: CreateAppOptions = {}) {
   const app = connect();
-
+  /*
   options.graphqlOptions = options.graphqlOptions || { schema: Schema };
   if (!options.excludeParser) {
     app.use('/graphql', bodyParser.json());
@@ -17,6 +17,7 @@ function createConnectApp(options: CreateAppOptions = {}) {
   }
   app.use('/graphql', require('connect-query')());
   app.use('/graphql', graphqlConnect( options.graphqlOptions ));
+  */
   return app;
 }
 
