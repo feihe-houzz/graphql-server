@@ -27,7 +27,7 @@ function isQueryOperation(query: DocumentNode, operationName: string) {
   return operationAST.operation === 'query';
 }
 
-export async function runHttpQuery(handlerArguments: Array<any>, request: HttpQueryRequest): Promise<string|ExecutionResult> {
+export async function runHttpQuery(handlerArguments: Array<any>, request: HttpQueryRequest): Promise<string|ExecutionResult|ExecutionResult[]> {
   let isGetRequest: boolean = false;
   let optionsObject: GraphQLOptions;
 

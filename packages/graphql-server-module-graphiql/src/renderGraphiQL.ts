@@ -50,6 +50,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
   const passHeader = data.passHeader ? data.passHeader : '';
   const snapshot = data.snapshot? data.snapshot : '';
 
+
   /* eslint-disable max-len */
   return `
 <!DOCTYPE html>
