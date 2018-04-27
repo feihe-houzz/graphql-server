@@ -1,6 +1,6 @@
 {
   "name": "graphql-server-express",
-  "version": "0.7.3-41",
+  "version": "0.7.3-44",
   "description": "Production-ready Node.js GraphQL server for Express and Connect",
   "main": "dist/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/apollostack/graphql-server#readme",
   "dependencies": {
     "graphql-server-core": "^0.7.3-28",
-    "graphql-server-module-graphiql": "^0.7.3-40",
+    "graphql-server-module-graphiql": "^0.7.3-43",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
