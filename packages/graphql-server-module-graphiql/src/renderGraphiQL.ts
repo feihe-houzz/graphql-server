@@ -29,6 +29,7 @@ export type GraphiQLData = {
   snapshot?: string,
 };
 
+
 // Current latest version of GraphiQL.
 const GRAPHIQL_VERSION = '0.9.0';
 

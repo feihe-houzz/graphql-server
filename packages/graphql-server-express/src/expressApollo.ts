@@ -92,7 +92,7 @@ export function graphiqlExpress(options: GraphiQL.GraphiQLData) {
     const q = req.url && url.parse(req.url, true).query || {};
     const query = q.query || '';
     const operationName = q.operationName || '';
-
+    const snapshot = q.snapshot;
     const graphiQLString = GraphiQL.renderGraphiQL({
       endpointURL: options.endpointURL,
       subscriptionsEndpoint: options.subscriptionsEndpoint,
@@ -100,6 +100,7 @@ export function graphiqlExpress(options: GraphiQL.GraphiQLData) {
       variables: q.variables && JSON.parse(q.variables) || options.variables,
       operationName: operationName || options.operationName,
       passHeader: options.passHeader,
+      snapshot: snapshot,
     });
     res.setHeader('Content-Type', 'text/html');
     res.write(graphiQLString);
