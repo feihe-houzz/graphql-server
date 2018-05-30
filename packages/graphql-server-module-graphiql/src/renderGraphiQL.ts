@@ -78,13 +78,6 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
   <script src="/j/graphouzz?file=graphiql.js"></script>
   ${usingSubscriptions ?
     '<script src="//unpkg.com/subscriptions-transport-ws@0.5.4/browser/client.js"></script>' +
@@ -166,8 +159,10 @@ export function renderGraphiQL(data: GraphiQLData): string {
     // When the query and variables string is edited, update the URL bar so
     // that it can be easily shared.
     function onEditQuery(newQuery) {
-      parameters.query = newQuery;
-      updateURL();
+      if (newQuery.length < 2000) {
+          parameters.query = newQuery;
+          updateURL();
+      }
     }
     function onEditVariables(newVariables) {
       parameters.variables = newVariables;
