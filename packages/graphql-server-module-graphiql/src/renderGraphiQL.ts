@@ -77,6 +77,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/react-tabs@2/style/react-tabs.css">
 
   <script src="/j/graphouzz?file=graphiql.js"></script>
   ${usingSubscriptions ?
