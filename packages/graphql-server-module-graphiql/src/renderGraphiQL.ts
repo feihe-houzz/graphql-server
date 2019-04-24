@@ -160,7 +160,7 @@ export function renderGraphiQL(data: GraphiQLData): string {
     // When the query and variables string is edited, update the URL bar so
     // that it can be easily shared.
     function onEditQuery(newQuery) {
-      if (newQuery.length < 2000) {
+      if (newQuery.length < 1000) {
           parameters.query = newQuery;
           updateURL();
       }
