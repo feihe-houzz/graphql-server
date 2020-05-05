@@ -1,6 +1,6 @@
 {
   "name": "graphql-server-hapi",
-  "version": "0.7.3-67",
+  "version": "0.7.3-68",
   "description": "Production-ready Node.js GraphQL server for Hapi",
   "main": "dist/index.js",
   "scripts": {
@@ -26,14 +26,14 @@
   "homepage": "https://github.com/apollostack/graphql-server#readme",
   "dependencies": {
     "boom": "^4.3.1",
-    "graphql-server-core": "^0.7.3-67",
-    "graphql-server-module-graphiql": "^0.7.3-67"
+    "graphql-server-core": "^0.7.3-68",
+    "graphql-server-module-graphiql": "^0.7.3-68"
   },
   "devDependencies": {
     "@types/boom": "0.0.33",
     "@types/graphql": "^0.9.0",
     "@types/hapi": "^16.0.0",
-    "graphql-server-integration-testsuite": "^0.7.3-67",
+    "graphql-server-integration-testsuite": "^0.7.3-68",
     "hapi": "^16.1.1"
   },
   "peerDependencies": {
